@@ -1,0 +1,29 @@
+const moment = require("moment")
+let m=moment()
+
+
+let value = {
+    interval: 30,
+    startTime: "00:00",
+    endTime: "23:00"
+  };
+  
+  var inputDataFormat = "HH:mm";
+  
+  
+  let int_st=moment(value.startTime,inputDataFormat);
+  let int_end=moment(value.startTime,inputDataFormat).add(value.interval,'m');
+  let finish_time=moment(value.endTime,inputDataFormat);
+  
+  
+  
+  
+    var intervals = [];
+    
+    while(int_st < finish_time) {
+      var format =  int_st.format(inputDataFormat) + " - " + int_end.format(inputDataFormat);
+      intervals.push(format);
+      int_st.add(value.interval,'m');
+      int_end.add(value.interval,'m');
+    }
+    console.log(intervals);
