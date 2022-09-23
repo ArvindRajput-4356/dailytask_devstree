@@ -1,0 +1,90 @@
+let roomArray = [
+
+  {
+    room_id: "123",
+    players: [
+      {
+        player_id: "1",
+        player_name: "abcd",
+        z_value: 123,
+      },
+      {
+        player_id: "2",
+        player_name: "efgh",
+        z_value: 125,
+      },
+      {
+        player_id: "3",
+        player_name: "hijk",
+        z_value: 127,
+      },
+    ],
+  },
+  {
+    room_id: "456",
+    players: [
+      {
+        player_id: "1",
+        player_name: "abcd",
+        z_value: 123,
+      },
+      {
+        player_id: "2",
+        player_name: "efgh",
+        z_value: 125,
+      },
+      {
+        player_id: "3",
+        player_name: "hijk",
+        z_value: 127,
+      },
+    ],
+  },
+
+
+  {
+    room_id: "789",
+  },
+
+  {
+    room_id: "101",
+  },
+];
+let playerScoreUpdate = {
+  room_id: "183",
+  players: {
+    player_id: "4",
+    player_name: "ab6546cd",
+    z_value: 777,
+  },
+
+  
+};
+
+
+let result = roomArray.findIndex(a=>a.room_id===playerScoreUpdate.room_id)                               //access the index of main entry condition if room_id match
+if(result>=0){
+  let second=roomArray[result].players.findIndex(b=>b.player_id===playerScoreUpdate.players.player_id)  // access the index of second condition if player_id match
+  if(second>=0){                                                                                       // if got the player_id
+    roomArray[result].players[second].player_name=playerScoreUpdate.players.player_name;              //updates th values of player_name
+    roomArray[result].players[second].z_value=playerScoreUpdate.players.z_value;                     // update the values of z_values
+  }
+  else{
+    roomArray[result].players.push(playerScoreUpdate.players)                                      // if player_id not matches then push into the main entry section
+  }
+
+}
+else{                                                                                             // if main entry condn not match then push the whole object 
+  let f = {
+    room_id:playerScoreUpdate.room_id,
+    players: [
+      {
+        player_id:playerScoreUpdate.players.player_id,
+        player_name:playerScoreUpdate.players.player_name,
+        z_value:playerScoreUpdate.players.z_value  
+      }
+    ]
+  }
+  roomArray.push(f)
+}
+console.log(roomArray);                                                                               // output
