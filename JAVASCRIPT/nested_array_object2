@@ -1,0 +1,74 @@
+let roomArray = [
+    {
+      room_id: "123",
+      players: [
+        {
+          player_id: "1",
+          player_name: "abcd",
+          z_value: 123,
+        },
+        {
+          player_id: "2",
+          player_name: "efgh",
+          z_value: 125,
+        },
+        {
+          player_id: "3",
+          player_name: "hijk",
+          z_value: 127,
+        },
+      ],
+    },
+    {
+      room_id: "456",
+    }
+  ];
+  
+  
+  let playerScoreUpdate = {
+    room_id: "123",
+    players:[
+      {
+        player_id: "1", 
+        player_name: "abcd",
+        z_value: 123,
+      },
+      {
+        player_id: "2",
+        player_name: "efgh",
+        z_value: 456,
+      },
+      {
+        player_id: "3",
+        player_name: "bla",
+        z_value: 127,
+      },
+      {
+        player_id: "8",
+        player_name: "lmnop",
+        z_value: 567,
+      },
+    
+    ],
+  }
+
+  let result=roomArray.findIndex(a=>a.room_id===playerScoreUpdate.room_id);
+  if(result>=0){
+  playerScoreUpdate.players.map((y)=>{
+    let abc=roomArray[result].players.findIndex(x=>x.player_id===y.player_id);
+    
+      if(abc>=0){
+      roomArray[result].players[abc]["player_name"]=y.player_name;
+      roomArray[result].players[abc].z_value=y.z_value;
+      }
+  
+      else{
+      roomArray[result].players.push(y);
+      }
+
+  })
+    
+  }
+   
+  
+  console.log(roomArray[0]);
